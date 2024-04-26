@@ -1,5 +1,24 @@
 const Job = require("../models/JobModel")
 
+exports.getJobs = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const Jobs = await Product.find()
+            const totalProduct = await Product.countDocuments()
+            resolve({
+                status: "OK",
+                message: "success",
+                data: Jobs,
+                pageCurrent: page,
+                totalProduct: totalProduct,
+                totalPage: Math.ceil(totalProduct / limit)
+            })
+
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 exports.addJob = (newJob) => {
     return new Promise(async (resolve, reject) => {
         const { position,
