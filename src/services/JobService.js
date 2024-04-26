@@ -1,9 +1,10 @@
 const Job = require('../models/JobModel')
+
 const getJobs = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const Jobs = await Product.find()
-            const totalProduct = await Product.countDocuments()
+            const Jobs = await Job.find()
+            const totalProduct = await Job.countDocuments()
             resolve({
                 status: "OK",
                 message: "success",
