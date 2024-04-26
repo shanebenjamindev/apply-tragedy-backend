@@ -14,7 +14,6 @@ exports.getJobs = async (req, res) => {
 // Add a new job
 exports.addJob = async (req, res) => {
     try {
-        console.log(typeof req.body);
         const { position, company, status, address, url } = req.body
         if (!position || !company || !status || !address || !url) {
             return res.status(200).json({
