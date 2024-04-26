@@ -1,6 +1,5 @@
 const JobService = require('../services/JobService')
-const Job = require('../models/JobModel');
-// Get all jobs
+const Job = require('../models/JobModel')
 const getJobs = async (req, res) => {
     {
         try {

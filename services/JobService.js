@@ -1,5 +1,4 @@
-const Job = require("../models/JobModel")
-
+const Job = require('../models/JobModel')
 const getJobs = () => {
     return new Promise(async (resolve, reject) => {
         try {

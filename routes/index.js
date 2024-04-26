@@ -1,6 +1,4 @@
-// const UserRouter = require('./UserRouter')
 const JobRouter = require('./JobRouter')
-
 const routes = (app) => {
     app.use('/api/jobs', JobRouter)
 }
