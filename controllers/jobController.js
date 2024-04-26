@@ -1,5 +1,5 @@
-const Job = require('../models/JobModel');
 const JobService = require('../services/JobService')
+const Job = require('../models/JobModel');
 // Get all jobs
 exports.getJobs = async (req, res) => {
     {
