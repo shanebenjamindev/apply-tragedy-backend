@@ -1,5 +1,5 @@
-const Job = require('../models/jobModel');
-
+const Job = require('../models/JobModel');
+const JobService = require('../services/JobService')
 // Get all jobs
 exports.getJobs = async (req, res) => {
     try {
@@ -13,28 +13,21 @@ exports.getJobs = async (req, res) => {
 
 // Add a new job
 exports.addJob = async (req, res) => {
-    const {
-        position,
-        company,
-        status,
-        dateSaved,
-        dateApplied,
-        followUp,
-    } = req.body;
-
     try {
-        const newJob = new Job({
-            position,
-            company,
-            status,
-            dateSaved,
-            dateApplied,
-            followUp,
-        });
-        await newJob.save();
-        res.json('Job added!');
-    } catch (err) {
-        res.status(400).json('Error: ' + err);
+        console.log(typeof req.body);
+        const { position, company, status, address, url } = req.body
+        if (!position || !company || !status || !address || !url) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The input is required'
+            })
+        }
+        const response = await JobService.addJob(req.body)
+        return res.status(200).json(response)
+    } catch (e) {
+        return res.status(404).json({
+            message: e
+        })
     }
 };
 

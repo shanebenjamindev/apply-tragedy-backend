@@ -9,7 +9,7 @@ const jobSchema = new mongoose.Schema({
   address: { type: String, required: true },
   dateSaved: { type: Date, default: Date.now },
   dateApplied: { type: Date },
-  followUp: { type: Date }
+  followUp: { type: String }
 });
 
 const Job = mongoose.model('Job', jobSchema);
