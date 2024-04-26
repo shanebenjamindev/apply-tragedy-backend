@@ -1,6 +1,6 @@
 const Job = require("../models/JobModel")
 
-exports.getJobs = () => {
+const getJobs = () => {
     return new Promise(async (resolve, reject) => {
         try {
             const Jobs = await Product.find()
@@ -18,7 +18,7 @@ exports.getJobs = () => {
         }
     })
 }
-exports.addJob = (newJob) => {
+const addJob = (newJob) => {
     return new Promise(async (resolve, reject) => {
         const { position,
             company,
@@ -53,4 +53,9 @@ exports.addJob = (newJob) => {
             reject(e)
         }
     })
+}
+
+module.exports = {
+    addJob,
+    getJobs
 }
