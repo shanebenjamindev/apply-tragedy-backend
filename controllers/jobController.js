@@ -1,7 +1,7 @@
 const JobService = require('../services/JobService')
 const Job = require('../models/JobModel');
 // Get all jobs
-exports.getJobs = async (req, res) => {
+const getJobs = async (req, res) => {
     {
         try {
             const response = await JobService.getJobs()
@@ -17,7 +17,7 @@ exports.getJobs = async (req, res) => {
 }
 
 // Add a new job
-exports.addJob = async (req, res) => {
+const addJob = async (req, res) => {
     try {
         const { position, company, status, address, url } = req.body
         if (!position || !company || !status || !address || !url) {
@@ -36,7 +36,7 @@ exports.addJob = async (req, res) => {
 };
 
 // Delete a job
-exports.deleteJob = async (req, res) => {
+const deleteJob = async (req, res) => {
     try {
         await Job.findByIdAndDelete(req.params.id);
         res.json('Job deleted.');
@@ -44,3 +44,9 @@ exports.deleteJob = async (req, res) => {
         res.status(400).json('Error: ' + err);
     }
 };
+
+module.exports = {
+    getJobs,
+    addJob,
+    deleteJob,
+}
