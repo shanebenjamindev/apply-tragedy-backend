@@ -9,9 +9,8 @@ exports.getJobs = () => {
                 status: "OK",
                 message: "success",
                 data: Jobs,
-                pageCurrent: page,
                 totalProduct: totalProduct,
-                totalPage: Math.ceil(totalProduct / limit)
+                totalPage: Math.ceil(totalProduct)
             })
 
         } catch (e) {
