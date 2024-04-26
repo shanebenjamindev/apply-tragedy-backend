@@ -25,6 +25,8 @@ const addJob = (newJob) => {
             status,
             address,
             url } = newJob
+
+            console.log(newJob);
         try {
             const checkedJob = await Job.findOne({
                 url: url
