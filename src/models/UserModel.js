@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema(
         address: { type: String },
         avatar: { type: String },
         city: { type: String },
-        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     },
     {
         timestamps: true

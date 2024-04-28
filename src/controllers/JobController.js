@@ -36,8 +36,8 @@ const getAllUserJob = async (req, res) => {
 // Add a new job
 const addJob = async (req, res) => {
     try {
-        const { position, company, status, address, url } = req.body
-        if (!position || !company || !status || !address || !url) {
+        const { position, company, status, address } = req.body
+        if (!position || !company || !status || !address) {
             return res.status(200).json({
                 status: 'ERR',
                 message: 'The input is required'

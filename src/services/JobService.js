@@ -49,22 +49,32 @@ const addJob = (newJob) => {
     return new Promise(async (resolve, reject) => {
         const { position, company, status, address, url, user } = newJob;
         try {
-            console.log(newJob);
-            // Create new job
-            const createdJob = await Job.create({
-                position,
-                company,
-                status,
-                address,
-                url,
-                user: user
-            });
 
-            resolve({
-                status: 'OK',
-                message: 'SUCCESS',
-                data: createdJob
-            });
+            const checkJob = await Job.findOne({ url: url, user: user })
+
+            if (checkJob !== null) {
+                resolve({
+                    status: 'ERR',
+                    message: 'DUPPLICATE',
+                });
+            }
+            else {
+
+                const createdJob = await Job.create({
+                    position,
+                    company,
+                    status,
+                    address,
+                    url,
+                    user: user
+                });
+
+                resolve({
+                    status: 'OK',
+                    message: 'SUCCESS',
+                    data: createdJob
+                });
+            }
 
         } catch (error) {
             reject(error);
