@@ -1,5 +1,6 @@
 const JobService = require('../services/JobService')
 const Job = require('../models/JobModel')
+
 const getJobs = async (req, res) => {
     {
         try {
@@ -12,7 +13,24 @@ const getJobs = async (req, res) => {
             })
         }
     }
+}
 
+const getAllUserJob = async (req, res) => {
+    try {
+        const userId = req.params.id
+        if (!userId) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The userId is required'
+            })
+        }
+        const response = await JobService.getAllUserJob(userId)
+        return res.status(200).json(response)
+    } catch (e) {
+        return res.status(404).json({
+            message: e
+        })
+    }
 }
 
 // Add a new job
@@ -34,6 +52,7 @@ const addJob = async (req, res) => {
     }
 };
 
+
 // Delete a job
 const deleteJob = async (req, res) => {
     try {
@@ -48,4 +67,5 @@ module.exports = {
     getJobs,
     addJob,
     deleteJob,
+    getAllUserJob,
 }
