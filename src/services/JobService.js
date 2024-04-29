@@ -20,6 +20,31 @@ const getJobs = () => {
     })
 }
 
+const updateStatus = (id, data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const checkProduct = await Job.findOne({
+                _id: id
+            })
+            if (checkProduct === null) {
+                resolve({
+                    status: 'ERR',
+                    message: 'The product is not defined'
+                })
+            }
+
+            const updatedProduct = await Job.findByIdAndUpdate(id, data, { new: true })
+            resolve({
+                status: 'OK',
+                message: 'SUCCESS',
+                data: updatedProduct
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
 const getAllUserJob = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -86,5 +111,6 @@ const addJob = (newJob) => {
 module.exports = {
     addJob,
     getJobs,
-    getAllUserJob
+    getAllUserJob,
+    updateStatus
 }

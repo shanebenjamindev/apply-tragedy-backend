@@ -7,6 +7,7 @@ router.get('/get-all', JobController.getJobs)
 router.post('/create', JobController.addJob)
 router.delete('/delete/:id', JobController.deleteJob)
 router.get('/get-all-user-job/:id', JobController.getAllUserJob)
+router.put('/update-status/:id', JobController.updateStatus)
 
 // router.get('/get-details-order/:id', OrderController.getDetailsOrder)
 // router.get('/get-details/:id', JobController.getDetailsProduct)
