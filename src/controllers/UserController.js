@@ -4,10 +4,10 @@ const User = require('../models/UserModel')
 
 const createUser = async (req, res) => {
     try {
-        const { name, email, password, confirmPassword, phone } = req.body
+        const { firstName, lastName, email, password, confirmPassword } = req.body
         const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
         const isCheckEmail = reg.test(email)
-        if (!email || !password || !confirmPassword) {
+        if (!email || !password || !confirmPassword || !firstName || !lastName) {
             return res.status(200).json({
                 status: 'ERR',
                 message: 'The input is required'
